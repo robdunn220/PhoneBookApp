@@ -1,9 +1,6 @@
 import sys
 import pickle
 
-electronic_PB = open('phonebook.pickle', 'r')
-phonebook_dict = pickle.load(electronic_PB)
-
 #Function that iterates through the list electronic_PB, looking for a match for the user input.
 def look_up():
     look_up_name = raw_input("Type a name to look up: ")
@@ -68,6 +65,11 @@ def list_all():
         print "Number: %s" % (electronic_PB[k])
         print "\n"
 
+def save_file():
+    my_file = open('phonebook.pickle', 'w')
+    pickle.dump(electronic_PB, my_file)
+    my_file.close()
+
 def phone_book():
     print "\n"
     print "Electronic Phone Book"
@@ -76,8 +78,9 @@ def phone_book():
     print "2\. Set an entry\n"
     print "3\. Delete an entry\n"
     print "4\. List all entries\n"
-    print "5\. Quit\n"
-    usr_input = int(raw_input("What do you want to do (1-5)? "))
+    print "5\. Save\n"
+    print "6.\ Quit\n"
+    usr_input = int(raw_input("What do you want to do (1-6)? "))
     print "\n"
 
     if usr_input == 1:
@@ -89,10 +92,14 @@ def phone_book():
     elif usr_input == 4:
         list_all()
     elif usr_input == 5:
+        save_file()
+    elif usr_input == 6:
         print "Thank you for using Electronic Phone Book"
         sys.exit();
 
-    while usr_input != 5:
+    while usr_input != 6:
         phone_book()
 
+my_file = open('phonebook.pickle', 'r')
+electronic_PB = pickle.load(my_file)
 phone_book()
