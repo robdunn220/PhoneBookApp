@@ -1,5 +1,4 @@
 import sys
-import pickle
 
 electronic_PB = {
                 'Someone': '000-000-0000',
@@ -17,7 +16,7 @@ def look_up():
             print "Name: %s" % k
             print "Phone number: %s" % electronic_PB[k]
             print "\n"
-            break
+            phone_book()
         else:
             pass
 

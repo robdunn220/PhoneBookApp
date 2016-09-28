@@ -1,6 +1,9 @@
 import sys
 import pickle
 
+my_file = open('phonebook.pickle', 'r')
+electronic_PB = pickle.load(my_file)
+
 #Function that iterates through the list electronic_PB, looking for a match for the user input.
 def look_up():
     look_up_name = raw_input("Type a name to look up: ")
@@ -11,7 +14,7 @@ def look_up():
             print "Name: %s" % k
             print "Phone number: %s" % electronic_PB[k]
             print "\n"
-            break
+            phone_book()
         else:
             pass
 
@@ -27,7 +30,8 @@ def look_up():
                 break
             else:
                 phone_book()
-            break
+        else:
+            phone_book()
 
 #Function that creates a new contact in electronic_PB based on user input
 def set_up():
@@ -100,6 +104,5 @@ def phone_book():
     while usr_input != 6:
         phone_book()
 
-my_file = open('phonebook.pickle', 'r')
-electronic_PB = pickle.load(my_file)
+
 phone_book()
