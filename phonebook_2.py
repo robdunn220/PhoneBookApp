@@ -26,10 +26,6 @@ def look_up():
                 print "\n"
                 print "Entry has been made for %s" % look_up_name
                 break
-            else:
-                phone_book()
-        else:
-            phone_book()
 
 #Function that creates a new contact in electronic_PB based on user input
 def set_up():
