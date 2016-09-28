@@ -15,8 +15,6 @@ def look_up():
             print "Phone number: %s" % electronic_PB[k]
             print "\n"
             phone_book()
-        else:
-            pass
 
     #Gives user the option to add new contact if a match is not found in the existing contents of electronic_PB
     for k in electronic_PB:
@@ -59,9 +57,8 @@ def delete_entry():
         if entry_to_del == k:
             del electronic_PB[entry_to_del]
             print "\n"
-            break
-
-    print "Sorry, that name is not in the phone book."
+            print "Entry has been deleted."
+            phone_book()
 
 def list_all():
     for k in electronic_PB:
