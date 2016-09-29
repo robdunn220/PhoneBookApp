@@ -32,9 +32,16 @@ def look_up():
     y = 0
     for k,v in electronic_PB:
         if look_up_name != electronic_PB[y]['name']:
-            print "That name does not exist"
-            y +=1
-            break
+            add_name = raw_input("Sorry, that name is not in the phone book. Add it (Y or N)? ")
+            if add_name.upper() == 'Y':
+                electronic_PB.insert(x, look_up_name)
+                new_work_number = raw_input("What is their work number? ")
+                new_cell_number = raw_input("What is their cell number? ")
+                #electronic_PB[x]['phone']['work'] = new_work_number
+                #electronic_PB[x]['phone']['cell'] = new_cell_number
+                print "\n"
+                print "Entry has been made for %s" % look_up_name
+                phone_book()
 
 #Function that creates a new contact in electronic_PB based on user input
 def set_up():
@@ -67,10 +74,13 @@ def delete_entry():
     print "Sorry, that name is not in the phone book."
 
 def list_all():
-    for k in electronic_PB:
-        print "Name: %s" % (k)
-        print "Number: %s" % (electronic_PB[k])
+    x = 0
+    for k,v in electronic_PB:
+        print "Name: %s" % (electronic_PB[x]['name'])
+        print "Work number: %s" % (electronic_PB[x]['phone']['work'])
+        print "Cell number: %s" % (electronic_PB[x]['phone']['cell'])
         print "\n"
+        x +=1
 
 
 def phone_book():
