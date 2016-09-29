@@ -56,6 +56,11 @@ def delete_entry():
             print "Entry has been deleted."
             phone_book()
 
+def undo_delete():
+    my_file = open('phonebook.pickle', 'r')
+    electronic_PB = pickle.load(my_file)
+    print "Your deleted contacts have been restored."
+
 def list_all():
     for k in electronic_PB:
         print "Name: %s" % (k)
@@ -74,10 +79,11 @@ def phone_book():
     print "1\. Look up an entry\n"
     print "2\. Set an entry\n"
     print "3\. Delete an entry\n"
-    print "4\. List all entries\n"
-    print "5\. Save\n"
-    print "6.\ Quit\n"
-    usr_input = int(raw_input("What do you want to do (1-6)? "))
+    print "4\. Undo delete (Must be used before saving)\n"
+    print "5\. List all entries\n"
+    print "6\. Save\n"
+    print "7.\ Quit\n"
+    usr_input = int(raw_input("What do you want to do (1-7)? "))
     print "\n"
 
     if usr_input == 1:
@@ -87,14 +93,16 @@ def phone_book():
     elif usr_input == 3:
         delete_entry()
     elif usr_input == 4:
-        list_all()
+        undo_delete()
     elif usr_input == 5:
-        save_file()
+        list_all()
     elif usr_input == 6:
+        save_file()
+    elif usr_input == 7:
         print "Thank you for using Electronic Phone Book"
         sys.exit();
 
-    while usr_input != 6:
+    while usr_input != 7:
         phone_book()
 
 
