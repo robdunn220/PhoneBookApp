@@ -37,8 +37,8 @@ def look_up():
                 electronic_PB.insert(x, look_up_name)
                 new_work_number = raw_input("What is their work number? ")
                 new_cell_number = raw_input("What is their cell number? ")
-                #electronic_PB[x]['phone']['work'] = new_work_number
-                #electronic_PB[x]['phone']['cell'] = new_cell_number
+                new_work_number = electronic_PB[x]['phone']['work']
+                new_cell_number = electronic_PB[x]['phone']['cell']
                 print "\n"
                 print "Entry has been made for %s" % look_up_name
                 phone_book()
@@ -48,16 +48,19 @@ def set_up():
     new_name = raw_input("Type a name to add: ")
 
     #Ensures that the new contact the user wants to add does not already exist in electronic_PB
-    for k in electronic_PB:
-        if new_name != k:
-            new_number = raw_input("What is their phone number? ")
-            electronic_PB[new_name] = new_number
+    y = 0
+    for k,v in electronic_PB:
+        if new_name != electronic_PB[y]['name']:
+            x = len(electronic_PB)
+            new_work_number = raw_input("What is their work number? ")
+            new_cell_number = raw_input("What is their cell number? ")
+            electronic_PB.insert(x, new_name)
             print "\n"
-            print "Entry has been made for %s" % new_name
+            print "Entry has been made for %s" % electronic_PB[x]
             break
         else:
-            print "Name has already been added. Back to menu."
-            break
+            print "Name has already been added. Back to menu"
+            phone_book()
 
 #Function that allows the user to delete an existing contacts in electronic_PB
 def delete_entry():
