@@ -6,6 +6,12 @@ electronic_PB = [
                         'work': '000-000-0000',
                         'cell': '123-456-7689'
                             }
+                    },
+                    {'name': 'John',
+                    'phone': {
+                        'work': '111-111-1111',
+                        'cell': '098-765-4321'
+                            }
                     }
                 ]
 
@@ -14,26 +20,20 @@ def look_up():
     look_up_name = raw_input("Type a name to look up: ")
 
     #Displays information of contact if match is found
-    for k in electronic_PB:
-        x = 0
-        for j,i in k.items():
-            if i == look_up_name:
-                print i
-                for
+    x = 0
+    for k,v in electronic_PB:
+        if look_up_name == electronic_PB[x]['name']:
+            print electronic_PB[x]['name']
+            print electronic_PB[x]['phone']['work']
+            print electronic_PB[x]['phone']['cell']
+            phone_book()
+        x += 1
 
-
-    #Gives user the option to add new contact if a match is not found in the existing contents of electronic_PB
-    for k in electronic_PB:
-        if look_up_name != k:
-            add_name = raw_input("Sorry, that name is not in the phone book. Add it (Y or N)? ")
-            if add_name.upper() == 'Y':
-                new_number = raw_input("What is their phone number? ")
-                electronic_PB[look_up_name] = new_number
-                print "\n"
-                print "Entry has been made for %s" % look_up_name
-                break
-            else:
-                phone_book()
+    y = 0
+    for k,v in electronic_PB:
+        if look_up_name != electronic_PB[y]['name']:
+            print "That name does not exist"
+            y +=1
             break
 
 #Function that creates a new contact in electronic_PB based on user input
