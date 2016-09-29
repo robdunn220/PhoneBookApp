@@ -25,7 +25,7 @@ def look_up():
                 electronic_PB[look_up_name] = new_number
                 print "\n"
                 print "Entry has been made for %s" % look_up_name
-                break
+                phone_book()
 
 #Function that creates a new contact in electronic_PB based on user input
 def set_up():
@@ -33,15 +33,17 @@ def set_up():
 
     #Ensures that the new contact the user wants to add does not already exist in electronic_PB
     for k in electronic_PB:
+        if new_name == k:
+            print "Name has already been added. Back to menu."
+            phone_book()
+
+    for k in electronic_PB:
         if new_name != k:
             new_number = raw_input("What is their phone number? ")
             electronic_PB[new_name] = new_number
             print "\n"
             print "Entry has been made for %s" % new_name
-            break
-        else:
-            print "Name has already been added. Back to menu."
-            break
+            phone_book()
 
 #Function that allows the user to delete an existing contacts in electronic_PB
 def delete_entry():
@@ -79,11 +81,10 @@ def phone_book():
     print "1\. Look up an entry\n"
     print "2\. Set an entry\n"
     print "3\. Delete an entry\n"
-    print "4\. Undo delete (Must be used before saving)\n"
-    print "5\. List all entries\n"
-    print "6\. Save\n"
-    print "7.\ Quit\n"
-    usr_input = int(raw_input("What do you want to do (1-7)? "))
+    print "4\. List all entries\n"
+    print "5\. Save\n"
+    print "6.\ Quit\n"
+    usr_input = int(raw_input("What do you want to do (1-6)? "))
     print "\n"
 
     if usr_input == 1:
@@ -93,16 +94,14 @@ def phone_book():
     elif usr_input == 3:
         delete_entry()
     elif usr_input == 4:
-        undo_delete()
-    elif usr_input == 5:
         list_all()
-    elif usr_input == 6:
+    elif usr_input == 5:
         save_file()
-    elif usr_input == 7:
+    elif usr_input == 6:
         print "Thank you for using Electronic Phone Book"
         sys.exit();
 
-    while usr_input != 7:
+    while usr_input != 6:
         phone_book()
 
 
